@@ -13,14 +13,14 @@ struct ContentView: View {
     @State private var textTitle = "What is your name?"
     var body: some View {
         VStack {
-            Text("What is your name?")
+            Text(textTitle)
                 .font(.title)
             TextField("Type your name here...", text: $name)
                 .multilineTextAlignment(.center)
                 .font(.title)
                 .border(Color.indigo, width: 3)
             Button("Submit Name") {
-                /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Action@*/ /*@END_MENU_TOKEN@*/
+                textTitle = "Welcome, \(name)!"
             }
             .font(.title2)
             .buttonStyle(.borderedProminent)
