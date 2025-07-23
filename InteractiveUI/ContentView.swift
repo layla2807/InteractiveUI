@@ -11,6 +11,8 @@ struct ContentView: View {
     @State private var name: String = ""
     
     @State private var textTitle = "What is your name?"
+    
+    @State private var showAlert = false
     var body: some View {
         VStack {
             Text(textTitle)
@@ -20,11 +22,16 @@ struct ContentView: View {
                 .font(.title)
                 .border(Color.indigo, width: 3)
             Button("Submit Name") {
-                textTitle = "Welcome, \(name)!"
+                showAlert = true
             }
             .font(.title2)
             .buttonStyle(.borderedProminent)
             .tint(.mint)
+            .alert("Submission Confirmed", isPresented: $showAlert) {
+                Button("Okay", role: .cancel) {
+                    textTitle = "Welcome, \(name)!"
+                }
+            }
         }
         .padding()
     }
